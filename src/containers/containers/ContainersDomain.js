@@ -8,12 +8,6 @@ const domain = {
 
         containerList: [],
         listLoading: true,
-
-        pagination: {
-            total: 0,
-            pageIndex: 0,
-            pageSize: 0
-        }
     },
 
     action: {
@@ -32,13 +26,8 @@ const domain = {
             domain.dispatch((model) => {
                 return {
                     ...model,
-                    containerList: data.rows,
-                    listLoading: false,
-                    pagination: {
-                        total: data.total,
-                        pageIndex: data.pageIndex,
-                        pageSize: data.pageSize
-                    }
+                    containerList: data,
+                    listLoading: false
                 };
             });
         }
