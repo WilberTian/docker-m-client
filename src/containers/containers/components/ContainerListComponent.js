@@ -116,7 +116,7 @@ export default class ContainerListComponent extends PureComponent {
         return (
             <Spin spinning={listLoading}>
                 <div className="container-list-component">
-                    <Table columns={columns} dataSource={containerList} rowKey="Id" />
+                    <Table columns={columns} dataSource={containerList} size="middle" rowKey="Id" />
                 </div>
             </Spin>
         );
