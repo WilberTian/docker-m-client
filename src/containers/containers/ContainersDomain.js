@@ -4,6 +4,7 @@ const domain = {
 
     model: {
         queryData: {
+            status: []
         },
 
         containerList: [],
@@ -11,6 +12,25 @@ const domain = {
     },
 
     action: {
+        updateQueryData: (data) => {
+            domain.dispatch((model) => {
+                const temp = Object.assign({}, model.queryData, data);
+                return {
+                    ...model,
+                    queryData: temp
+                };
+            });
+        },
+
+        clearQueryData: () => {
+            domain.dispatch((model) => {
+                return {
+                    ...model,
+                    queryData: domain.model.queryData
+                };
+            });
+        },
+
         getContainerList: async (queryData) => {
             domain.dispatch((model) => {
                 return {

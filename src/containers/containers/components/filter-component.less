@@ -1,3 +1,49 @@
 .filter-component {
-	
+	width:100%;
+    padding:10px;
+    background-color:white;
+    border:1px solid #e1e1e1;
+
+    .form-group{
+        display:inline-block;
+        width:270px;
+        margin:10px 0px 10px 0;
+        .form-label{
+            display:inline-block;
+            width:100px;
+            margin-right:10px;
+            padding-left:10px;
+            text-align: right;
+        }
+        .form-input{
+            display:inline-block;
+            width:160px;
+        }
+    }	
+
+    .status-filter {
+    	.form-input{
+            display:inline-flex;
+            .ant-tag-checkable {
+            	border: 1px solid #e1e1e1;
+            }
+            .ant-tag-checkable-checked {
+            	border: 1px solid transparent;
+            }
+        }
+    }
+
+    .form-group-button{
+        margin:10px 0;
+        width:100%;
+        display: flex;
+        flex-direction:row;
+        flex-wrap:nowrap;
+        justify-content: center;
+        align-items:center;
+
+        button {
+            margin-right: 20px;
+        }
+    }
 }

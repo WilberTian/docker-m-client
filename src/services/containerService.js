@@ -4,9 +4,13 @@ import requestPrefix from '../utils/requestPrefix';
 const prefix = requestPrefix('URI_FOR_PROD_ENV');
 
 export default {
-    getContainerList: async () => {
+    getContainerList: async (queryData) => {
         const request = {
-            url: `${prefix}/containers`
+            url: `${prefix}/containers`,
+            data: {
+                all: 1,
+                filters: JSON.stringify(queryData)
+            }
         };
 
         const result = await fetch(request);
