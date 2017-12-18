@@ -15,5 +15,14 @@ export default {
 
         const result = await fetch(request);
         return result;
+    },
+
+    getContainerDetail: async (containerId) => {
+        const request = {
+            url: `${prefix}/containers/${containerId}`
+        };
+
+        const result = await fetch(request);
+        return result;
     }
 };

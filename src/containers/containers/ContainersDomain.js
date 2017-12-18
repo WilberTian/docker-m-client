@@ -4,7 +4,7 @@ const domain = {
 
     model: {
         queryData: {
-            status: []
+            status: ['running']
         },
 
         containerList: [],
