@@ -22,7 +22,7 @@ const devServerOptions = {
         '/api': {
             target: 'http://' + configs.localServerIP + ':' + configs.localServerPort + '/docker-m',
             pathRewrite(path, option) {
-                option.method = 'GET';
+                // option.method = 'GET';
                 return path.substr(4);
             }
         }

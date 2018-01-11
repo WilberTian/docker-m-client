@@ -30,6 +30,11 @@ const domain = {
                     listLoading: false
                 };
             });
+        },
+
+        deleteImage: async (imageId) => {
+            const result = await services.deleteImage(imageId);
+            return result;
         }
     }
 };

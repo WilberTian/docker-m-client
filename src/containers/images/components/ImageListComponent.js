@@ -17,7 +17,8 @@ const mapper = {
     },
     actionMapper: (action) => {
         return {
-            getImageList: action.getImageList
+            getImageList: action.getImageList,
+            deleteImage: action.deleteImage
         };
     }
 };
@@ -37,6 +38,18 @@ export default class ImageListComponent extends PureComponent {
             message.error(ex.message);
         }
     }
+
+    async _deleteImage(imageId) {
+        const { deleteImage, getImageList } = this.props;
+
+        try {
+            await deleteImage(imageId);
+            await getImageList();
+        } catch (ex) {
+            message.error(ex.message);
+        }
+    }
+
     render() {
         const { imageList, listLoading } = this.props;
 
@@ -92,7 +105,15 @@ export default class ImageListComponent extends PureComponent {
             render: (text, record) => {
                 return (
                     <div className="image-operation-btn-group">
-                        <Button size="small" type="danger">Delete</Button>
+                        <Button
+                          size="small"
+                          type="danger"
+                          onClick={() => {
+                              this._deleteImage(record.Id);
+                          }}
+                        >
+                            Delete
+                        </Button>
                     </div>
                 );
             }

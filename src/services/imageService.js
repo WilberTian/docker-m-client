@@ -11,5 +11,15 @@ export default {
 
         const result = await fetch(request);
         return result;
+    },
+
+    deleteImage: async (imageId) => {
+        const request = {
+            url: `${prefix}/images/${imageId}/delete`,
+            method: 'POST'
+        };
+
+        const result = await fetch(request);
+        return result;
     }
 };
