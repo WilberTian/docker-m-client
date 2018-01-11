@@ -14,7 +14,10 @@ const mapper = {
     },
     actionMapper: (action) => {
         return {
-            getContainerList: action.getContainerList
+            getContainerList: action.getContainerList,
+            startContainer: action.startContainer,
+            stopContainer: action.stopContainer,
+            deleteContainer: action.deleteContainer
         };
     }
 };
@@ -34,6 +37,40 @@ export default class ContainerListComponent extends PureComponent {
             message.error(ex.message);
         }
     }
+
+    async _startContainer(containerId) {
+        const { startContainer, getContainerList } = this.props;
+
+        try {
+            await startContainer(containerId);
+            await getContainerList();
+        } catch (ex) {
+            message.error(ex.message);
+        }
+    }
+
+    async _stopContainer(containerId) {
+        const { stopContainer, getContainerList } = this.props;
+
+        try {
+            await stopContainer(containerId);
+            await getContainerList();
+        } catch (ex) {
+            message.error(ex.message);
+        }
+    }
+
+    async _deleteContainer(containerId) {
+        const { deleteContainer, getContainerList } = this.props;
+
+        try {
+            await deleteContainer(containerId);
+            await getContainerList();
+        } catch (ex) {
+            message.error(ex.message);
+        }
+    }
+
     render() {
         const { containerList, listLoading } = this.props;
 
@@ -102,11 +139,35 @@ export default class ContainerListComponent extends PureComponent {
                 return (
                     <div className="container-operation-btn-group">
                         {record.State === 'running' && <div>
-                            <Button size="small" type="danger">Stop</Button>
+                            <Button
+                              size="small"
+                              type="danger"
+                              onClick={() => {
+                                  this._stopContainer(record.Id);
+                              }}
+                            >
+                                Stop
+                            </Button>
                         </div>}
                         {record.State === 'exited' && <div>
-                            <Button size="small" type="primary">Start</Button>
-                            <Button size="small" type="danger">Delete</Button>
+                            <Button
+                              size="small"
+                              type="primary"
+                              onClick={() => {
+                                  this._startContainer(record.Id);
+                              }}
+                            >
+                                Start
+                            </Button>
+                            <Button
+                              size="small"
+                              type="danger"
+                              onClick={() => {
+                                  this._deleteContainer(record.Id);
+                              }}
+                            >
+                                Delete
+                            </Button>
                         </div>}
                     </div>
                 );

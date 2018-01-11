@@ -50,6 +50,21 @@ const domain = {
                     listLoading: false
                 };
             });
+        },
+
+        startContainer: async (containerId) => {
+            const result = await services.startContainer(containerId);
+            return result;
+        },
+
+        stopContainer: async (containerId) => {
+            const result = await services.stopContainer(containerId);
+            return result;
+        },
+
+        deleteContainer: async (containerId) => {
+            const result = await services.deleteContainer(containerId);
+            return result;
         }
     }
 };

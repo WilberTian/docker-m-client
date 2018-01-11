@@ -24,5 +24,35 @@ export default {
 
         const result = await fetch(request);
         return result;
+    },
+
+    startContainer: async (containerId) => {
+        const request = {
+            url: `${prefix}/containers/${containerId}/start`,
+            method: 'POST'
+        };
+
+        const result = await fetch(request);
+        return result;
+    },
+
+    stopContainer: async (containerId) => {
+        const request = {
+            url: `${prefix}/containers/${containerId}/stop`,
+            method: 'POST'
+        };
+
+        const result = await fetch(request);
+        return result;
+    },
+
+    deleteContainer: async (containerId) => {
+        const request = {
+            url: `${prefix}/containers/${containerId}/delete`,
+            method: 'POST'
+        };
+
+        const result = await fetch(request);
+        return result;
     }
 };
