@@ -3,6 +3,8 @@ import { message, Spin, Table, Button } from 'antd';
 
 import DomainMapper from '../../../utils/DomainMapper';
 
+import ConfirmModal from '../../../components/ConfirmModal';
+
 import './container-list-component.less';
 
 const mapper = {
@@ -143,7 +145,14 @@ export default class ContainerListComponent extends PureComponent {
                               size="small"
                               type="danger"
                               onClick={() => {
-                                  this._stopContainer(record.Id);
+                                  ConfirmModal({
+                                      title: 'Stop container',
+                                      iconType: '',
+                                      content: `Sure to stop container '${record.Id.substr(0, 12)}'?`,
+                                      onOk: () => {
+                                          this._stopContainer(record.Id);
+                                      }
+                                  });
                               }}
                             >
                                 Stop
@@ -163,7 +172,14 @@ export default class ContainerListComponent extends PureComponent {
                               size="small"
                               type="danger"
                               onClick={() => {
-                                  this._deleteContainer(record.Id);
+                                  ConfirmModal({
+                                      title: 'Delete container',
+                                      iconType: '',
+                                      content: `Sure to delete container '${record.Id.substr(0, 12)}'?`,
+                                      onOk: () => {
+                                          this._deleteContainer(record.Id);
+                                      }
+                                  });
                               }}
                             >
                                 Delete

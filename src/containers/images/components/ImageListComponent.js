@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import DomainMapper from '../../../utils/DomainMapper';
 
+import ConfirmModal from '../../../components/ConfirmModal';
 import bytesToSize from '../../../utils/bytesToSize';
 
 import './image-list-component.less';
@@ -109,7 +110,14 @@ export default class ImageListComponent extends PureComponent {
                           size="small"
                           type="danger"
                           onClick={() => {
-                              this._deleteImage(record.Id);
+                              ConfirmModal({
+                                  title: 'Delete image',
+                                  iconType: '',
+                                  content: `Sure to delete image '${record.Id.substr(7, 12)}'?`,
+                                  onOk: () => {
+                                      this._deleteImage(record.Id);
+                                  }
+                              });
                           }}
                         >
                             Delete

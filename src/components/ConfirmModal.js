@@ -2,8 +2,8 @@ import { Modal } from 'antd';
 
 const ConfirmModal = (args) => {
     const defaultArgs = {
-        title: '删除',
-        content: '确定删除么?',
+        title: 'Delete',
+        content: 'Sure to delete?',
         onCancel: () => { console.log('cancel'); },
         onOk: () => { console.log('ok'); }
     };
